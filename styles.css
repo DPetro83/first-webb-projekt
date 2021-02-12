@@ -1,0 +1,120 @@
+/*master styles*/
+
+body{
+    margin: 0px;
+}
+
+/*vi lägger hela foundation genom att använda oss av grid*/
+.container{
+    display:grid;
+    /*l want the container to use grid and the l want you to create templates colums genom att använda sig av 1fr vad det innebär är att vårt hela layout kommer bastå av kolummer dock är dem osynliga så vi kan inte se dem än*/
+    grid-template-columns: 1fr;
+}
+
+
+/*navstyles*/
+.nav-wrapper{
+    display:flex;
+    /*skapar distans mellan länkarna*/
+    justify-content: space-between;
+    padding: 38px;
+
+}
+
+.left-side{
+    display:flex;
+}
+/* l want you to start with nav-wrapper (>) betyder, 
+gå till vänstra sidan och sedan vill jag att du tar hand om divsen där >
+ så vilka stilar jag än applicerar kommer dem att påverka ändast de divsen som finns där */
+.nav-wrapper > .left-side > div{
+    margin-right: 20px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+/*att få linjen under home och about att vara transperant*/
+.nav-link-wrapper{
+    height: 22px;
+    border-bottom: 1 solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+/* (a framför classen)  står för innanför ta tag i (a) länken <a href=""</a>  alltså home och about och styla om de */
+.nav-link-wrapper a{
+    color: #8a8a8a;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+/* linjen under home och about att den uppstår och är svart när musen pekar på dem*/
+.nav-link-wrapper:hover{
+    border-bottom: 1px solid black;
+
+}
+/*detta är samma sak dock att texten blir svart när musen pekar på dem*/
+.nav-link-wrapper a:hover{
+    color: black;
+
+}
+
+/*portfolio styles*/
+
+.portfolio-items-wrapper{
+    display: grid;
+    /*detta kommer ge kollumerna (3st) sin storlek*/
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.portfolio-item-wrapper{
+    /*detta kommer tillåter oss att ha mer flexibilitet hur vi positionerar items in i dem */
+    position: relative;
+
+}
+
+.portfolio-img-background{
+    height: 350px;
+    width: 100%; /* detta innebär att bredden kommer justeras automatiskt*/
+    background-size: cover; /*detta gör så att bilderna ligger intillvarandra*/
+    background-position: center;
+    background-repeat:no-repeat;
+}
+/*jag vill positionera texten på bilden eller på den andra diven, detta genomförs genom först att vi kallar på klassen*/
+.img-text-wrapper{
+    position:absolute;/* kolla på portfolio-item-wrapper ->position relative är nödvändig om du vill ha bilder/loggar nested  i varandra då behöver vi använda oss av position:absolute vilket tvingar elementet att positionera sig var den vanligtvis inte skulle placera sig. för att kunna utföra detta så behöver elementet vara en en föreldrar-element altså den som omslutar de som man vill positionera.   */
+    top:0;/* du vill positionera den på toppen */
+    display:flex;
+    flex-direction: column;
+    justify-content: center; /*centrera fråm vänster till höger*/
+    align-items:center; /*från topp till botten*/
+    height: 100%;
+    text-align: center;
+    padding-left: 100px;
+    padding-right: 100px;
+
+}
+
+/*styla loggan*/
+
+.logo-wrapper img{
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+/*styla texten - i detta fall begöver vi vara mer specifika göra texten osynlig fram till musen är över bilden */
+.img-text-wrapper .subtitle {
+    transition: 1s;
+    font-weight: 600;
+    color: transparent;
+    }
+
+
+/*styla texten - i detta fall begöver vi vara mer specifika */
+.img-text-wrapper:hover .subtitle {
+font-weight: 600;
+color: lightseagreen;
+}
+
+/* we are going to make javascript call on this class and make it uppear when you hover the muse over it*/
+.img-darken{
+    transition: 1s;
+    filter: brightness(10%);
+}
